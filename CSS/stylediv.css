@@ -253,6 +253,12 @@ section {
     margin: 0;
 }
 
+/* Ajuste manual para los logos que vienen muy grandes de fábrica */
+.skill-card .logo_grande {
+    width: 60px; 
+    height: 60px;
+}
+
 /* PROYECTOS */
 .proyectos-grid {
     display: grid;

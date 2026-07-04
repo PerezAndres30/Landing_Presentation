@@ -474,4 +474,26 @@ footer {
     .proyect-grid, .eventos-grid {
         grid-template-columns: 1fr; 
     }
+
+    .btn-contacto {
+        margin-top: 1rem;
+    }
+}
+
+/* Estilo para el botón de contacto */
+.btn-contacto {
+    background-color: var(--acento);
+    color: var(--bg-principal);
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-contacto:hover {
+    transform: translateY(-2px);
+    background-color: var(--acento-hover);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }

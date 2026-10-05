@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens (one source of truth) ---------- */
+@theme {
+  /* Warm, friendly palette */
+  --color-background: #fff7ed;      /* cream */
+  --color-surface: #ffffff;
+  --color-surface-2: #fdebd8;       /* peach tint */
+  --color-border: #f0dcc8;
+  --color-ink: #2a2437;             /* deep plum: footer, logo card */
+  --color-text-primary: #2a2437;    /* 14:1 on background */
+  --color-text-secondary: #5e566e;  /* 6.9:1 on background */
+  --color-accent: #ff7a59;          /* coral: fills, buttons */
+  --color-accent-strong: #ff6440;
+  --color-accent-ink: #b8400f;      /* coral for text: 5.3:1 on background */
+  --color-on-accent: #2a2437;       /* 6.6:1 on accent */
+  --color-mint: #dcf3ee;
+  --color-mint-ink: #0f6b60;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-enter: 800ms;
+  --dur-hover: 220ms;
+  --stagger: 80ms;
+
+  --radius-card: 1.5rem;
+  --container: 1200px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  background: var(--color-background);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+p { text-wrap: pretty; }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection { background: var(--color-accent); color: var(--color-on-accent); }
+
+/* ---------- Type scale ---------- */
+.display-xl {
+  font-size: clamp(3.25rem, min(11vw, 19svh), 9.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+.display-hero {
+  font-size: clamp(3.25rem, min(9vw, 16svh), 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+.display-l {
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+.eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+  font-weight: 600;
+}
+
+/* ---------- Layout ---------- */
+.container-x {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+.section-y { padding-block: clamp(5rem, 11vw, 9rem); }
+
+/* ---------- Reveal motion (progressive enhancement) ----------
+   Content is visible by default. Only when the inline script has set
+   html.js do elements start hidden, so nothing is lost without JS. */
+.js .reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity var(--dur-enter) var(--ease-out-expo),
+    transform var(--dur-enter) var(--ease-out-expo);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+.js .reveal.in { opacity: 1; transform: none; }
+
+.js .words .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.6em, 0);
+  transition:
+    opacity var(--dur-enter) var(--ease-out-expo),
+    transform var(--dur-enter) var(--ease-out-expo);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.js .words.in .word { opacity: 1; transform: none; }
+
+/* Image zoom reveal */
+.js .img-reveal { clip-path: inset(0 0 12% 0 round var(--radius-card)); transition: clip-path 1100ms var(--ease-out-expo); }
+.js .img-reveal.in { clip-path: inset(0 0 0 0 round var(--radius-card)); }
+
+/* ---------- Hero load animation (CSS only: content is never left hidden) ---------- */
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fall {
+  from { opacity: 0; transform: translate3d(0, -140px, 0) rotate(-540deg) scale(0.5); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-in { animation: rise 900ms var(--ease-out-expo) backwards; animation-delay: calc(var(--i, 0) * 90ms); }
+.hero-fall { animation: fall 1100ms var(--ease-out-expo) backwards; animation-delay: calc(var(--i, 0) * 140ms + 150ms); }
+
+/* Traveling card is live: the static copy inside each slot steps aside. */
+.card-on .slot-static { opacity: 0; }
+
+/* ---------- Tech marquee ---------- */
+@keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+.marquee-track { animation: marquee 38s linear infinite; width: max-content; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* ---------- Reduced motion: keep fades, drop movement & loops ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .js .words .word { transform: none; transition-property: opacity; }
+  .js .img-reveal { clip-path: none; }
+  .marquee-track { animation: none; }
+  .hero-in, .hero-fall { animation: none; }
+}

@@ -178,7 +178,7 @@ export function FloatingCard() {
       <div ref={inner} className="relative size-full will-change-transform [transform-style:preserve-3d]">
         {/* front: photo */}
         <div className={`${face} border-4 border-surface bg-surface-2`}>
-          <Image src="/img/yo.jpg" alt="" fill sizes="280px" loading="eager" className="object-cover" />
+          <Image src="/img/yo.jpg" alt="" fill sizes="320px" loading="eager" className="object-cover" />
         </div>
         {/* back: logo */}
         <div className={`${face} flex items-center justify-center bg-ink p-[12%]`} style={{ transform: "rotateY(180deg)" }}>

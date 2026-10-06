@@ -17,7 +17,7 @@ export function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute -left-40 bottom-0 size-[28rem] rounded-full bg-mint blur-3xl" />
 
       <div className="container-x relative flex min-h-svh items-center pb-14 pt-28 lg:pt-24">
-        <div className="mx-auto grid w-full max-w-[68rem] items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-12">
           <div className="order-1 flex flex-col">
             <p className="eyebrow hero-in" style={delay(0)}>
               {hero.greeting}
@@ -38,7 +38,7 @@ export function Hero() {
               {hero.tagline}
             </p>
 
-            <p className="hero-in mt-4 max-w-[30rem] text-base leading-relaxed text-text-secondary sm:text-lg" style={delay(4)}>
+            <p className="hero-in mt-4 max-w-[36rem] text-base leading-relaxed text-text-secondary sm:text-lg" style={delay(4)}>
               {hero.description}
             </p>
 
@@ -55,7 +55,7 @@ export function Hero() {
           <div className="order-2 justify-self-center lg:justify-self-end">
             <CardSlot rot={5}>
               <div className="relative size-full border-4 border-surface bg-surface-2">
-                <Image src="/img/yo.jpg" alt={hero.photoAlt} fill priority sizes="280px" className="object-cover" />
+                <Image src="/img/yo.jpg" alt={hero.photoAlt} fill priority sizes="320px" className="object-cover" />
               </div>
             </CardSlot>
           </div>

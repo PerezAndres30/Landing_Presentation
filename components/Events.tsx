@@ -10,7 +10,7 @@ export function Events() {
         <SectionHeading id="eventos-title" {...eventsSection} />
         <div className="grid gap-6">
           {events.map((e) => (
-            <article key={e.title} className="group grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end md:gap-10">
+            <article key={e.title} className="group grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-center md:gap-10">
               <Reveal variant="img-reveal" className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface">
                 <Image
                   src={e.image.src}

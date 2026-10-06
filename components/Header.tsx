@@ -58,8 +58,8 @@ export function Header() {
           : "border-b border-transparent"
       }`}
     >
-      <nav aria-label="Principal" className="container-x flex h-[72px] items-center justify-between">
-        <a href="#" aria-label="Inicio" className="group inline-flex min-h-11 items-center">
+      <nav aria-label="Principal" className="container-x grid h-[72px] grid-cols-[1fr_auto_1fr] items-center">
+        <a href="#" aria-label="Inicio" className="group col-start-1 inline-flex min-h-11 items-center justify-self-start">
           <Image
             src="/img/logo-dark.png"
             alt=""
@@ -70,7 +70,7 @@ export function Header() {
           />
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="col-start-2 hidden items-center gap-1 md:flex">
           {nav.map((item) => (
             <li key={item.href}>
               <a
@@ -83,7 +83,7 @@ export function Header() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="col-start-3 flex items-center gap-2 justify-self-end">
           <a
             href={site.whatsapp}
             target="_blank"

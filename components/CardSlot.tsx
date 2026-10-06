@@ -20,7 +20,7 @@ export function CardSlot({ rot, hideBefore = false, className = "", children }: 
       data-card-slot
       data-rot={rot}
       data-hide-before={hideBefore ? "true" : undefined}
-      className={`relative aspect-[3/4] w-[min(17.5rem,64vw)] ${className}`}
+      className={`relative aspect-[3/4] w-[min(20rem,64vw)] ${className}`}
     >
       <div
         className="slot-static absolute inset-0 overflow-hidden rounded-[var(--radius-card)] shadow-[0_30px_60px_-25px_rgba(42,36,55,0.45)] transition-opacity duration-200"

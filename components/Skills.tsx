@@ -7,10 +7,10 @@ import { SectionHeading } from "./SectionHeading";
 export function Skills() {
   return (
     <section id="lenguajes" aria-labelledby="lenguajes-title" className="section-y">
-      <div className="container-x grid gap-12 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:items-center lg:gap-16">
+      <div className="container-x grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-center lg:gap-16">
         <div>
         <SectionHeading id="lenguajes-title" {...skillsSection} />
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4">
           {skills.map((s, i) => (
             <Reveal as="li" key={s.name} index={i % 4}>
               <div className="group flex h-full flex-col items-center justify-center gap-4 rounded-[var(--radius-card)] border border-border bg-surface p-5 transition-all duration-[220ms] hover:-translate-y-1.5 hover:border-accent hover:bg-surface-2 md:p-6">
